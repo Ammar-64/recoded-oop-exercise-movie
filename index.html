@@ -7,13 +7,29 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
     <title>Movie</title>
     <style>
-      #movie-backdrop {
+      img.np.movie-backdrop{
         width: 100%;
+        padding-top: 32px;
+        
+        
+      }
+      img.movie-backdrop{
+        width: 100%;
+        
+      }
+
+      div.np.col-md-8{
+        display: inline-block;
+      }
+      div.col-md-8{
+        display: inline-block;
+      
       }
 
       .container {
         padding-top: 32px;
       }
+      
 
       #actors {
         margin: 24px 16px 0 0;
@@ -21,25 +37,8 @@
     </style>
   </head>
   <body>
-
-<div class="container">
- 
-    <div class="row">
-      <div class="col-xs-6 col-md-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search by Movie Name" id="movieName"/>
-          <div class="input-group-btn">
-            <button class="btn btn-primary" id='searchBtn' type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-</div>
     <div id="container" class="container"></div>
-
-    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+    <script src="./new_script.js"></script>
   </body>
 </html>

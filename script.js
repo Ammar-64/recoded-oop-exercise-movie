@@ -2,9 +2,13 @@ class App {
   static run() {
     
     APIService.fetchMovies()
-    .then(movies => HomePage.renderMovies(movies))
+    // .then(movies => HomePage.renderMovies(movies))
+    .then(movies => {console.log(movies)})
     
-
+    APIService.fetchAllGenres()
+    .then(el => {
+      console.log(el)
+    })
         
   }
 }
@@ -31,6 +35,15 @@ class APIService {
         
   }
 
+  static fetchAllGenres(){
+    const url = APIService._constructUrl(`genre/movie/list`)
+    return fetch(url)
+    .then(res => res.json())
+    .then(json=> json.genres)
+  }
+
+
+
   
 
   
@@ -55,10 +68,12 @@ class HomePage {
     movies.forEach(movie => {
       const movieDiv = document.createElement("div");
       const movieImage = document.createElement("img");
+      const movieGenres = document.createElement("p")
+
       movieImage.src = `${movie.backdropUrl}`;
       const movieTitle = document.createElement("h3");
      
-      movieGenres.textContent =`${movie.genres}`
+      // movieGenres.textContent =`${movie.genres}`
       movieTitle.textContent = `${movie.title}`;
       movieImage.addEventListener("click", function() {
         Movies.run(movie)
@@ -177,9 +192,9 @@ class Movie {
     
     this.genres="";
     for (const i in json.genres){
-      this.genres+=` ${json.genres[i].name}`
+      this.genres+=`${json.genres[i].name}|`
     }
-    
+    this.genres=this.genres.slice(0,-1)
     
     
   }
@@ -187,6 +202,8 @@ class Movie {
   get backdropUrl() {
     return this.backdropPath ? Movie.BACKDROP_BASE_URL + this.backdropPath : ""
   }
+
+   
 }
 
 
